@@ -49,3 +49,31 @@ function goByPromise() {
         return sleep(5000);
     }).then(goByPromise);
 }
+
+async function goByAsync() {
+    while (true) {
+        green();
+        await sleep(10000);
+        yellow();
+        await sleep(2000);
+        red();
+        await sleep(5000);
+    }
+}
+
+function happen(element, eventName) {
+    return new Promise((resolve, reject) => {
+        element.addEventListener(eventName, resolve, {once: true});
+    })
+}
+
+async function goByAsyncAndEvent() {
+    while (true) {
+        green();
+        await happen(document.getElementById('next'), 'click');
+        yellow();
+        await happen(document.getElementById('next'), 'click');
+        red();
+        await happen(document.getElementById('next'), 'click');
+    }
+}
