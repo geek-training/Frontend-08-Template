@@ -29,15 +29,45 @@ function move (x, y) {
         return false;
     }
     pattern[x][y] =  color;
-    if (check(x, y)) {
-        alert((color === 1 ? 'O' : 'X') + ' win');
+    if (check(pattern, color, x, y)) {
+        alert((color === 1 ? 'O' : 'X') + ' won!');
     }
     color = 3 - color;
     show(pattern);
+    if (willWin(pattern, color)) {
+        console.log((color === 1 ? 'O' : 'X') + ' will win!')
+    }
 }
 
-function check(x, y) {
+function willWin(pattern, color) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (pattern[i][j]) {
+                continue;
+            }
+            let tmp = clone(pattern);
+            tmp[i][j] = color;
+            if (check(tmp, color, i, j)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
+function clone(pattern) {
+    return JSON.parse(JSON.stringify(pattern));
+}
+
+/**
+ * 判断当前落子位置是否会赢
+ * @param pattern 落子后pattern
+ * @param color 当前color
+ * @param x 最后一次落子x
+ * @param y 最后一次落子y
+ * @returns {boolean}
+ */
+function check(pattern, color, x, y) {
     // 如果在对角线上
     if (x === y) {
         let win = true;
