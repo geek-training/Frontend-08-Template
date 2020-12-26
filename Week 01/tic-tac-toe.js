@@ -3,6 +3,11 @@ let pattern = [
     [0, 1, 0],
     [0, 0, 0],
 ];
+const Result = {
+    Won: 1,
+    Lost: -1,
+    Draw: 0
+}
 let color = 1;
 function show(pattern) {
     let board = document.getElementById('board');
@@ -14,7 +19,7 @@ function show(pattern) {
             cell.innerText =
                 pattern[i][j] === 1 ? 'O' :
                 pattern[i][j] === 2 ? 'X' : '';
-            cell.addEventListener('click', () => { move(i, j); })
+            cell.addEventListener('click', () => { userMove(i, j); })
             board.appendChild(cell);
         }
         board.append(document.createElement('br'));
@@ -24,7 +29,7 @@ function show(pattern) {
 
 show(pattern);
 
-function move (x, y) {
+function userMove (x, y) {
     // 如果该位置已落子，不做处理
     if (pattern[x][y]) {
         return false;
@@ -46,13 +51,13 @@ function bestChoice(pattern, color) {
     if (p) {
         return {
             point: p,
-            result: 1
+            result: Result.Won
         }
     }
 
-    let result = -2;
+    let result = Result.Lost;
     let point = null;
-    for (let i = 0; i < 3; i++) {
+    outer: for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (pattern[i][j]) continue;
             let tmp = clone(pattern);
@@ -62,11 +67,14 @@ function bestChoice(pattern, color) {
                 result = -opp.result;
                 point = [i, j];
             }
+            if (result === Result.Won) {
+                break outer;
+            }
         }
     }
     return {
         point: point,
-        result: point ? result: 0
+        result: point ? result: Result.Draw
     }
 }
 
@@ -87,7 +95,7 @@ function willWin(pattern, color) {
 }
 
 function clone(pattern) {
-    return JSON.parse(JSON.stringify(pattern));
+    return Object.create(pattern);
 }
 
 /**
