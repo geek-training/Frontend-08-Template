@@ -9,6 +9,7 @@
 7. 三种异步处理方式
     - callback
     - Promise
+        - then 中 return 另一个 promise
     - async/await
     
     

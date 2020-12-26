@@ -34,3 +34,18 @@ function goByCallback() {
         }, 2000)
     }, 10000)
 }
+function sleep(time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, time);
+    })
+}
+function goByPromise() {
+    green();
+    sleep(1000).then(() => {
+        yellow();
+        return sleep(2000);
+    }).then(() => {
+        red();
+        return sleep(5000);
+    }).then(goByPromise);
+}
