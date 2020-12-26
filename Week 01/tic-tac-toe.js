@@ -1,6 +1,6 @@
 let pattern = [
-    [0, 0, 2],
-    [0, 1, 0],
+    [0, 0, 0],
+    [0, 0, 0],
     [0, 0, 0],
 ];
 const Result = {
@@ -24,7 +24,6 @@ function show(pattern) {
         }
         board.append(document.createElement('br'));
     }
-    console.log(bestChoice(pattern,color))
 }
 
 show(pattern);
@@ -35,14 +34,25 @@ function userMove (x, y) {
         return false;
     }
     pattern[x][y] =  color;
-
     if (check(pattern, color, x, y)) {
-        alert((color === 1 ? 'O' : 'X') + ' won!');
+        alert((color === 1 ? 'O' : 'X') + ' is winner!');
     }
     color = 3 - color;
     show(pattern);
-    if (willWin(pattern, color)) {
-        console.log((color === 1 ? 'O' : 'X') + ' will win!')
+    computerMove();
+}
+
+function computerMove() {
+    let choice = bestChoice(pattern, color);
+    if (choice.point) {
+        let p = choice.point;
+        pattern[p[0]][p[1]] = color;
+
+        if (check(pattern, color, p[0], p[1])) {
+            alert((color === 1 ? 'O' : 'X') + ' is winner!');
+        }
+        color = 3 - color;
+        show(pattern);
     }
 }
 
@@ -95,7 +105,7 @@ function willWin(pattern, color) {
 }
 
 function clone(pattern) {
-    return Object.create(pattern);
+    return JSON.parse(JSON.stringify(pattern));
 }
 
 /**
@@ -160,6 +170,7 @@ function check(pattern, color, x, y) {
             return true;
         }
     }
+    return false;
 }
 
 
