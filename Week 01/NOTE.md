@@ -6,3 +6,9 @@
 5. 克隆：JSON.parse(JSON.stringify(pattern))
 6. 克隆：let tmp = Object.create(pattern); 原型机制
     改变tmp数组的值时，pattern里面的值也发生了改变
+7. 三种异步处理方式
+    - callback
+    - Promise
+    - async/await
+    
+    
