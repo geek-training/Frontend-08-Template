@@ -14,7 +14,6 @@ function show(pattern) {
             cell.innerText =
                 pattern[i][j] === 1 ? 'O' :
                 pattern[i][j] === 2 ? 'X' : '';
-            ;
             cell.addEventListener('click', () => { move(i, j); })
             board.appendChild(cell);
         }
@@ -30,53 +29,62 @@ function move (x, y) {
         return false;
     }
     pattern[x][y] =  color;
-    if (check()) {
-        alert(color + 'win');
+    if (check(x, y)) {
+        alert((color === 1 ? 'O' : 'X') + ' win');
     }
     color = 3 - color;
     show(pattern);
 }
 
-function check() {
-    for (let i = 0; i < 3; i++) {
-        let win = true;
-        for (let j = 0; j < 3; j++) {
-            if (pattern[i][j] !== color) {
-                win = false;
-            }
-        }
-        if (win) {
-            return true;
-        }
-    }
-    for (let i = 0; i < 3; i++) {
-        let win = true;
-        for (let j = 0; j < 3; j++) {
-            if (pattern[j][i] !== color) {
-                win = false;
-            }
-        }
-        if (win) {
-            return true;
-        }
-    }
-    {
-        let win = true;
-        for (let i = 0; i < 3; i++) {
-            if(pattern[i][i] !== color) {
-                win = false;
-            }
-        }
-        if (win) {
-            return true;
-        }
+function check(x, y) {
 
+    // 如果在对角线上
+    if (x === y) {
+        let win = true;
+        for (let i = 0; i < 3; i++) {
+            if (pattern[i][i] !== color) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            return true;
+        }
     }
+    // 如果在反对角线上
+    if (x + y === 2) {
+        let win = true;
+        for (let i = 0; i < 3; i++) {
+            if (pattern[i][2-i] !== color) {
+                win = false;
+                break;
+            }
+        }
+        if (win) {
+            return true;
+        }
+    }
+    // 判断当前落子的行
     {
         let win = true;
         for (let i = 0; i < 3; i++) {
-            if(pattern[i][2-i] !== color) {
+            if (pattern[x][i] !== color) {
                 win = false;
+                break;
+            }
+        }
+        if (win) {
+            return true;
+        }
+    }
+
+    // 判断当前落子的列
+    {
+        let win = true;
+        for (let i = 0; i < 3; i++) {
+            if (pattern[i][y] !== color) {
+                win = false;
+                break;
             }
         }
         if (win) {
