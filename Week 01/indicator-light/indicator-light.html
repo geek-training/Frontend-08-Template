@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Indicator Light</title>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            height: 300px;
+            background: #d7c5c5;
+            border: 2px solid #777;
+            border-radius: 50px;
+            user-select: none;
+        }
+        .wrapper > div {
+            flex: 1;
+            border: 1px solid #bfb9b9;
+            border-radius: 50%;
+        }
+        .light.red {
+            background: red;
+        }
+        .light.yellow {
+            background: yellow;
+        }
+        .light.green {
+            background: green;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="wrapper">
+        <div class="red"></div>
+        <div class="yellow"></div>
+        <div class="green"></div>
+    </div>
+    <script src="indicator-light.js"></script>
 </body>
 </html>
