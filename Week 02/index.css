@@ -1,0 +1,15 @@
+#container {
+  width: 701px;
+}
+
+.cell {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  line-height: 7px;
+  background-color: gray;
+  border: 1px solid white;
+  border-top: 0px;
+  border-left: 0px;
+  vertical-align: middle;
+}
