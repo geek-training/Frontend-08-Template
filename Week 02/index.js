@@ -107,5 +107,5 @@ async function findPath(map, start, end) {
     await insert(x + 1, y - 1, [x, y]);
     await insert(x - 1, y + 1, [x, y]);
   }
-  return false;
+  return null;
 }
