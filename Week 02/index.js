@@ -19,6 +19,40 @@ window.onload = function() {
   initMap();
 };
 
+class Sorted {
+  constructor(data, compare) {
+    this.data = data.slice();
+    this.compare = compare || ((a, b) => a-b);
+  }
+
+  take() {
+    if (!this.data.length) {
+      return;
+    }
+    let min = this.data[0];
+    let minIndex = 0;
+
+    for (let i = 1; i < this.data.length; i++) {
+      if (this.compare(this.data[i], min) < 0) {
+        min = this.data[i];
+        minIndex = i;
+      }
+    }
+
+    // 用最后一个元素覆盖最小值的位置
+    this.data[minIndex] = this.data[this.data.length - 1];
+    // 与民Index位置重复，pop
+    this.data.pop();
+    // 返回最小值
+    return min;
+  }
+
+  give(v) {
+    this.data.push(v);
+  }
+
+}
+
 function saveMap() {
   localStorage["map"] = JSON.stringify(map);
 }
@@ -70,7 +104,8 @@ function sleep(t) {
 async function findPath(map, start, end) {
   console.log(start)
   console.log(end)
-  let queue = [start];
+  // let queue = [start];
+  let queue = new Sorted([start], (a, b) => distance(a) - distance(b));
   let table = Object.create(map);
 
   async function insert(x, y, pre) {
@@ -78,14 +113,18 @@ async function findPath(map, start, end) {
       return ;
     }
     if (table[100*x + y]) return ;
-    // await sleep(30);
+    await sleep(5);
     container.children[100*x + y].style.backgroundColor = 'lightgreen';
     table[100*x + y]= pre;
-    queue.push([x, y]);
+    queue.give([x, y]);
+  }
+
+  function distance(point) {
+    return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2;
   }
 
   while(queue.length) {
-    let [x, y] = queue.shift();
+    let [x, y] = queue.take();
     if (x === end[0] && y === end[1]) {
       let path = [];
 
