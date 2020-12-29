@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vertical Align</title>
+  <style type="text/css">
+    .parent {
+      height: 100px;
+      line-height: 100px;
+      border: 1px solid #555;
+    }
+    .parent span {
+      border: 1px solid #00f;
+      line-height: 32px;
+    }
+    span.top {
+      border: 1px solid #0f0;
+      vertical-align: top;
+    }
+    .middle {
+      vertical-align: middle;
+    }
+    .baseline {
+      vertical-align: baseline;
+    }
+    span.bottom {
+      border: 1px solid #0f0;
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    This is parent text.
+    <span class="top">Top child</span>
+    This is parent text.
+    <span class="middle">Middle child</span><span class="baseline">BaseLine child</span>
+    This is parent text.
+    <span class="baseline">BaseLine child</span>
+    This is parent text.
+    <span class="bottom">Bottom child</span>
+    This is parent text.
+  </div>
+</body>
+</html>
