@@ -57,21 +57,64 @@ class Sorted {
 
 }
 
-function saveMap() {
-  localStorage["map"] = JSON.stringify(map);
+class BinaryHeap {
+  constructor(data, compare) {
+    this.data = data;
+    this.compare = compare;
+  }
+
+  take() {
+    if (!this.data.length) {
+      return;
+    }
+    let min = this.data[0];
+    let i = 0;
+    while (i<this.data.length) {
+      if (i*2 + 1 >= this.data.length) {
+        break;
+      }
+      if (i*2 + 2 >= this.data.length) {
+        this.data[i] = this.data[i*2 + 1];
+        i = i*2 + 1;
+        break;
+      }
+      if (this.compare(this.data[i*2 + 1], this.data[i*2 + 2]) < 0) {
+        this.data[i] = this.data[i*2 + 1];
+        i = i*2 + 1;
+      } else {
+        this.data[i] = this.data[i*2 + 2];
+        i = i*2 + 2;
+      }
+    }
+    if (i < this.data.length - 1) {
+      this.insertAt(i, this.data.pop());
+    } else {
+      this.data.pop();
+    }
+    return min;
+  }
+
+  insertAt(i, v) {
+    this.data[i] = v;
+    while (i > 0 && this.compare(v, this.data[Math.floor((i - 1) / 2)]) < 0 ) {
+      this.data[i] = this.data[Math.floor((i - 1) / 2)];
+      this.data[Math.floor((i - 1) / 2)] = v;
+      i = Math.floor((i - 1) / 2);
+    }
+  }
+
+  insert(v) {
+    this.insertAt(this.data.length, v);
+  }
+
+  get length() {
+    return this.data.length;
+  }
+
 }
 
-/**
- * 打印map
- */
-function printMap() {
-  for (let y = 0; y < 100; y++) {
-    let line = '';
-    for (let x = 0; x < 100; x++) {
-      line += ' ' + map[100*y + x];
-    }
-    console.log(line);
-  }
+function saveMap() {
+  localStorage["map"] = JSON.stringify(map);
 }
 
 function initMap() {
@@ -168,7 +211,51 @@ async function findPathBySorted(map, start, end) {
 
   while(queue.length) {
     let [x, y] = queue.take();
-    console.log([x, y]);
+    if (x === end[0] && y === end[1]) {
+      let path = [];
+
+      while (x !== start[0] || y !== start[1]) {
+        path.push(map[100 * x + y]);
+        [x, y] = table[100 * x + y];
+        await sleep(30);
+        container.children[100 * x + y].style.backgroundColor = 'purple';
+      }
+      return path;
+    }
+    await insert(x - 1, y, [x, y]);
+    await insert(x + 1, y, [x, y]);
+    await insert(x, y - 1, [x, y]);
+    await insert(x, y + 1, [x, y]);
+
+    await insert(x - 1, y - 1, [x, y]);
+    await insert(x + 1, y + 1, [x, y]);
+    await insert(x + 1, y - 1, [x, y]);
+    await insert(x - 1, y + 1, [x, y]);
+  }
+  return null;
+}
+
+async function findPathByBinaryHeap(map, start, end) {
+  let queue = new BinaryHeap([start], (a, b) => distance(a) - distance(b));
+  let table = Object.create(map);
+
+  async function insert(x, y, pre) {
+    if (x < 0 || x >= 100 || y < 0 || y >= 100) {
+      return ;
+    }
+    if (table[100*x + y]) return ;
+    await sleep(5);
+    container.children[100*x + y].style.backgroundColor = 'lightgreen';
+    table[100*x + y]= pre;
+    queue.insert([x, y]);
+  }
+
+  function distance(point) {
+    return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2;
+  }
+
+  while(queue.length) {
+    let [x, y] = queue.take();
     if (x === end[0] && y === end[1]) {
       let path = [];
 
