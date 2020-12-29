@@ -51,6 +51,10 @@ class Sorted {
     this.data.push(v);
   }
 
+  get length() {
+    return this.data.length;
+  }
+
 }
 
 function saveMap() {
@@ -102,11 +106,50 @@ function sleep(t) {
 }
 
 async function findPath(map, start, end) {
-  console.log(start)
-  console.log(end)
-  // let queue = [start];
+  let queue = [start];
+  let table = Object.create(map);
+
+  async function insert(x, y, pre) {
+    if (x < 0 || x >= 100 || y < 0 || y >= 100) {
+      return ;
+    }
+    if (table[100*x + y]) return ;
+    await sleep(5);
+    container.children[100*x + y].style.backgroundColor = 'lightgreen';
+    table[100*x + y]= pre;
+    queue.push([x, y]);
+  }
+
+  while(queue.length) {
+    let [x, y] = queue.shift();
+    if (x === end[0] && y === end[1]) {
+      let path = [];
+
+      while (x !== start[0] || y !== start[1]) {
+        path.push(map[100 * x + y]);
+        [x, y] = table[100 * x + y];
+        await sleep(30);
+        container.children[100 * x + y].style.backgroundColor = 'purple';
+      }
+      return path;
+    }
+    await insert(x - 1, y, [x, y]);
+    await insert(x + 1, y, [x, y]);
+    await insert(x, y - 1, [x, y]);
+    await insert(x, y + 1, [x, y]);
+
+    await insert(x - 1, y - 1, [x, y]);
+    await insert(x + 1, y + 1, [x, y]);
+    await insert(x + 1, y - 1, [x, y]);
+    await insert(x - 1, y + 1, [x, y]);
+  }
+  return null;
+}
+
+async function findPathBySorted(map, start, end) {
   let queue = new Sorted([start], (a, b) => distance(a) - distance(b));
   let table = Object.create(map);
+  debugger
 
   async function insert(x, y, pre) {
     if (x < 0 || x >= 100 || y < 0 || y >= 100) {
@@ -125,6 +168,7 @@ async function findPath(map, start, end) {
 
   while(queue.length) {
     let [x, y] = queue.take();
+    console.log([x, y]);
     if (x === end[0] && y === end[1]) {
       let path = [];
 
