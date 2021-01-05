@@ -1,22 +1,38 @@
-const regexp = /([0-9\.]+)|([\r\n]+)|(\*)|(\/)|(\+)|(\-)/g;
+const regexp = /([0-9\.]+)|([ \t])|([\r\n]+)|(\*)|(\/)|(\+)|(\-)/g;
 const dictionary = ["Number", "Whitespace", "LineTerminator", "*", "/", "+", "-"];
 
-function tokensize(source) {
+function* tokenize(source) {
   let result = null;
+  let lastIndex = 0;
   while(true) {
     result = regexp.exec(source);
+    lastIndex = regexp.lastIndex;
 
     if (!result) break;
 
-    console.log("result", result);
+    if (regexp.lastIndex - lastIndex > result[0].length)
+      break;
+
+    let token = {
+      type: null,
+      value: null
+    }
+
+    token.value = result[0];
 
     for (let i = 1; i <= dictionary.length; i++) {
       if (result[i]) {
-        console.log(dictionary[i-1]);
+        token.type = dictionary[i-1];
       }
     }
-    console.log(result);
+    yield token;
+  }
+  yield {
+    type: "EOF"
   }
 }
 
-tokensize("1024 + 10 * 25");
+const SOURCE = "1024 + 10 * 25";
+for (let token of tokenize(SOURCE)) {
+  console.log(token);
+}
