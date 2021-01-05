@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Week 02/vertical-align.html" beforeDir="false" afterPath="$PROJECT_DIR$/Week 02/vertical-align.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 01/廖雪青-前端技术.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/廖雪青-前端技术.xmind" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,10 +83,10 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="91" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="636" />
     <option name="y" value="23" />
-    <option name="width" value="1347" />
+    <option name="width" value="804" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectView">
@@ -183,15 +184,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609242845316</updated>
-      <workItem from="1609242847909" duration="2396000" />
+      <workItem from="1609242847909" duration="2612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2396000" />
+    <option name="totallyTimeSpent" value="2612000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="23" width="1386" height="877" extended-state="6" />
+    <frame x="636" y="23" width="804" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
@@ -199,7 +200,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
