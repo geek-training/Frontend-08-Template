@@ -1,4 +1,15 @@
 const regexp = /([0-9\.]+)|([ \t])|([\r\n]+)|(\*)|(\/)|(\+)|(\-)/g;
+const Dictionary_Type = {
+  Number: 'Number',
+  Whitespace: 'Whitespace',
+  LineTerminator: 'LineTerminator',
+  Multiplication: '*',
+  Division: '/',
+  Addition: '+',
+  Subtraction: '-',
+  EOF: 'EOF',
+}
+
 const dictionary = ["Number", "Whitespace", "LineTerminator", "*", "/", "+", "-"];
 
 function* tokenize(source) {
@@ -28,11 +39,54 @@ function* tokenize(source) {
     yield token;
   }
   yield {
-    type: "EOF"
+    type: Dictionary_Type.EOF
+  }
+}
+let source = [];
+for (let token of tokenize(10 * 25)) {
+  if (token.type !== Dictionary_Type.Whitespace && token.type !== Dictionary_Type.LineTerminator) {
+    source.push(token);
   }
 }
 
-const SOURCE = "1024 + 10 * 25";
-for (let token of tokenize(SOURCE)) {
-  console.log(token);
+function Expression(tokens) {
+
 }
+
+function AdditionExpression(source) {
+
+}
+
+function MultiplicationExpression(source) {
+  const type0 = source[0].type;
+  if (type0.type === Dictionary_Type.Number) {
+    let node = {
+      type: 'MultiplicationExpression',
+      children: [source[0]]
+    }
+    source[0] = node;
+    return MultiplicationExpression(source);
+  }
+  const type1 = source[1] && source[1].type;
+  if (
+      type0 === 'MultiplicationExpression' &&
+      (type1 === Dictionary_Type.Multiplication || type1 === Dictionary_Type.Subtraction)
+  ) {
+    let node = {
+      type: 'MultiplicationExpression',
+      operator: type1,
+      children: [],
+    }
+    node.children.push(source.shift());
+    node.children.push(source.shift());
+    node.children.push(source.shift());
+    source.unshift(node);
+    return MultiplicationExpression(source);
+  }
+  if (type0 === 'MultiplicationExpression') {
+    return source[0];
+  }
+  return MultiplicationExpression(source);
+}
+
+MultiplicationExpression(source);
