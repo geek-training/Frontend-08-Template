@@ -13,5 +13,21 @@
     3. flags
     4. global
     5. ignoreCase
+    
+4. Expression
+    1. <AdditionExpression><EOF>
+
+5. AdditionExpression
+    1. <MultiplicationExpression>
+    2. <AdditionExpression><+><MultiplicationExpression>
+    3. <AdditionExpression><-><MultiplicationExpression>
+
+
+6. MultiplicationExpression  
+    1. <Number>
+    2. <MultiplicationExpression><*><Number>
+    3. <MultiplicationExpression></><Number>
+
+  
 
 

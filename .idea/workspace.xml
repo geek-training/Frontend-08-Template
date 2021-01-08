@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Week 03/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 03/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 03/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Week 03/NOTE.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +112,7 @@
       <updated>1609242845316</updated>
       <workItem from="1609242847909" duration="3341000" />
       <workItem from="1609850806574" duration="1201000" />
-      <workItem from="1610071047400" duration="5434000" />
+      <workItem from="1610071047400" duration="6245000" />
     </task>
     <servers />
   </component>
@@ -143,6 +144,12 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="123" width="1720" height="897" key="DiffContextDialog" timestamp="1610085005639">
+      <screen x="0" y="23" width="1920" height="1097" />
+    </state>
+    <state x="100" y="123" width="1720" height="897" key="DiffContextDialog/0.23.1920.1097@0.23.1920.1097" timestamp="1610085005639" />
   </component>
   <component name="masterDetails">
     <states>
