@@ -11,7 +11,6 @@ const Dictionary_Type = {
 }
 
 const dictionary = ["Number", "Whitespace", "LineTerminator", "*", "/", "+", "-"];
-let source = [];
 
 function* tokenize(source) {
   let result = null;
@@ -45,12 +44,13 @@ function* tokenize(source) {
 }
 
 function combineSource(exp) {
+  let source = [];
   for (let token of tokenize(exp)) {
     if (token.type !== Dictionary_Type.Whitespace && token.type !== Dictionary_Type.LineTerminator) {
       source.push(token);
     }
   }
-  console.log('source:', source);
+  return source;
 }
 
 function Expression(tokens) {
@@ -58,7 +58,37 @@ function Expression(tokens) {
 }
 
 function AdditionExpression(source) {
-
+  const type0 = source[0] && source[0].type;
+  if (type0 === 'MultiplicationExpression') {
+    let node = {
+      type: 'AdditionExpression',
+      children: [source[0]]
+    }
+    source[0] = node;
+    return AdditionExpression(source);
+  }
+  const type1 = source[1] && source[1].type;
+  if (
+      type0 === 'AdditionExpression' &&
+      (type1 === Dictionary_Type.Addition || type1 === Dictionary_Type.Subtraction)
+  ) {
+    let node = {
+      type: 'AdditionExpression',
+      operator: Dictionary_Type.Addition,
+      children: []
+    }
+    node.children.push(source.shift());
+    node.children.push(source.shift());
+    MultiplicationExpression(source);
+    node.children.push(source.shift());
+    source.unshift(node);
+    return AdditionExpression(source);
+  }
+  if (type0 === 'AdditionExpression') {
+    return source[0];
+  }
+  MultiplicationExpression(source);
+  return AdditionExpression(source);
 }
 
 function MultiplicationExpression(source) {
@@ -93,6 +123,10 @@ function MultiplicationExpression(source) {
   return MultiplicationExpression(source);
 }
 
-combineSource('10 * 25 / 2');
-MultiplicationExpression(source);
-console.log("result: ", source);
+const multiplicationSource = combineSource('10 * 25 / 2');
+MultiplicationExpression(multiplicationSource);
+console.log("multiplicationSource result: ", multiplicationSource);
+
+const additionSource = combineSource('2 + 3 + 15');
+AdditionExpression(additionSource);
+console.log("additionSource result: ", additionSource);
