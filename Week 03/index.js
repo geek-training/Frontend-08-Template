@@ -9,6 +9,11 @@ const Dictionary_Type = {
   Subtraction: '-',
   EOF: 'EOF',
 }
+const Expression_Type = {
+  AddExpr: 'AdditionExpression',
+  MultiExpr: 'MultiplicationExpression',
+  Expr: 'Expression',
+}
 
 const dictionary = ["Number", "Whitespace", "LineTerminator", "*", "/", "+", "-"];
 
@@ -53,61 +58,72 @@ function combineSource(exp) {
   return source;
 }
 
-function Expression(tokens) {
-
+function expression(source) {
+  const type0 = source[0] && source[0].type;
+  const type1 = source[1] && source[1].type;
+  if (type0 === Expression_Type.AddExpr && type1 === Dictionary_Type.EOF) {
+    let node = {
+      type: Expression_Type.Expr,
+      children: [source.shift(), source.shift()]
+    }
+    source.unshift(node);
+    return node;
+  }
+  additionExpression(source);
+  return expression(source);
 }
 
-function AdditionExpression(source) {
+function additionExpression(source) {
   const type0 = source[0] && source[0].type;
-  if (type0 === 'MultiplicationExpression') {
+  if (type0 === Expression_Type.MultiExpr) {
     let node = {
-      type: 'AdditionExpression',
+      type: Expression_Type.AddExpr,
       children: [source[0]]
     }
     source[0] = node;
-    return AdditionExpression(source);
+    return additionExpression(source);
   }
   const type1 = source[1] && source[1].type;
   if (
-      type0 === 'AdditionExpression' &&
+      type0 === Expression_Type.AddExpr &&
       (type1 === Dictionary_Type.Addition || type1 === Dictionary_Type.Subtraction)
   ) {
     let node = {
-      type: 'AdditionExpression',
+      type: Expression_Type.AddExpr,
       operator: Dictionary_Type.Addition,
       children: []
     }
     node.children.push(source.shift());
     node.children.push(source.shift());
-    MultiplicationExpression(source);
+    multiplicationExpression(source);
     node.children.push(source.shift());
     source.unshift(node);
-    return AdditionExpression(source);
+    return additionExpression(source);
   }
-  if (type0 === 'AdditionExpression') {
+  if (type0 === Expression_Type.AddExpr) {
     return source[0];
   }
-  MultiplicationExpression(source);
-  return AdditionExpression(source);
+  multiplicationExpression(source);
+  return additionExpression(source);
 }
 
-function MultiplicationExpression(source) {
+function multiplicationExpression(source) {
   const type0 = source[0] && source[0].type;
   if (type0 === Dictionary_Type.Number) {
     let node = {
-      type: 'MultiplicationExpression',
+      type: Expression_Type.MultiExpr,
       children: [source[0]]
     }
     source[0] = node;
-    return MultiplicationExpression(source);
+    return multiplicationExpression(source);
   }
   const type1 = source[1] && source[1].type;
   if (
-      type0 === 'MultiplicationExpression' &&
+      type0 === Expression_Type.MultiExpr &&
       (type1 === Dictionary_Type.Multiplication || type1 === Dictionary_Type.Division)
   ) {
     let node = {
-      type: 'MultiplicationExpression',
+      type: Expression_Type.MultiExpr,
       operator: type1,
       children: [],
     }
@@ -115,18 +131,22 @@ function MultiplicationExpression(source) {
     node.children.push(source.shift());
     node.children.push(source.shift());
     source.unshift(node);
-    return MultiplicationExpression(source);
+    return multiplicationExpression(source);
   }
-  if (type0 === 'MultiplicationExpression') {
+  if (type0 === Expression_Type.MultiExpr) {
     return source[0];
   }
-  return MultiplicationExpression(source);
+  return multiplicationExpression(source);
 }
 
 const multiplicationSource = combineSource('10 * 25 / 2');
-MultiplicationExpression(multiplicationSource);
+multiplicationExpression(multiplicationSource);
 console.log("multiplicationSource result: ", multiplicationSource);
 
 const additionSource = combineSource('2 + 3 + 15');
-AdditionExpression(additionSource);
+additionExpression(additionSource);
 console.log("additionSource result: ", additionSource);
+
+const source = combineSource('2 * 6 + 7 - 3');
+expression(source);
+console.log("source result: ", source);
