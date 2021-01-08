@@ -11,6 +11,7 @@ const Dictionary_Type = {
 }
 
 const dictionary = ["Number", "Whitespace", "LineTerminator", "*", "/", "+", "-"];
+let source = [];
 
 function* tokenize(source) {
   let result = null;
@@ -42,11 +43,14 @@ function* tokenize(source) {
     type: Dictionary_Type.EOF
   }
 }
-let source = [];
-for (let token of tokenize(10 * 25)) {
-  if (token.type !== Dictionary_Type.Whitespace && token.type !== Dictionary_Type.LineTerminator) {
-    source.push(token);
+
+function combineSource(exp) {
+  for (let token of tokenize(exp)) {
+    if (token.type !== Dictionary_Type.Whitespace && token.type !== Dictionary_Type.LineTerminator) {
+      source.push(token);
+    }
   }
+  console.log('source:', source);
 }
 
 function Expression(tokens) {
@@ -58,8 +62,8 @@ function AdditionExpression(source) {
 }
 
 function MultiplicationExpression(source) {
-  const type0 = source[0].type;
-  if (type0.type === Dictionary_Type.Number) {
+  const type0 = source[0] && source[0].type;
+  if (type0 === Dictionary_Type.Number) {
     let node = {
       type: 'MultiplicationExpression',
       children: [source[0]]
@@ -70,7 +74,7 @@ function MultiplicationExpression(source) {
   const type1 = source[1] && source[1].type;
   if (
       type0 === 'MultiplicationExpression' &&
-      (type1 === Dictionary_Type.Multiplication || type1 === Dictionary_Type.Subtraction)
+      (type1 === Dictionary_Type.Multiplication || type1 === Dictionary_Type.Division)
   ) {
     let node = {
       type: 'MultiplicationExpression',
@@ -89,4 +93,6 @@ function MultiplicationExpression(source) {
   return MultiplicationExpression(source);
 }
 
+combineSource('10 * 25 / 2');
 MultiplicationExpression(source);
+console.log("result: ", source);
