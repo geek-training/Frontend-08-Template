@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Week 04/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 04/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 04/relative-div-test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 04/relative-span-test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 03/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Week 03/NOTE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +59,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week 04" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -71,6 +75,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Week 04" />
       <recent name="$PROJECT_DIR$/Week 03" />
       <recent name="$PROJECT_DIR$/Week 02" />
     </key>
@@ -112,7 +117,7 @@
       <updated>1609242845316</updated>
       <workItem from="1609242847909" duration="3341000" />
       <workItem from="1609850806574" duration="1201000" />
-      <workItem from="1610071047400" duration="6245000" />
+      <workItem from="1610071047400" duration="8923000" />
     </task>
     <servers />
   </component>
