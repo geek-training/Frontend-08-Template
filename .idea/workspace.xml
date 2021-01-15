@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Week 04/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Week 04/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Week 04/relative-div-test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Week 04/relative-span-test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 04/trie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 04/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Week 04/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 04/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 04/kmp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/！" beforeDir="false" afterPath="$PROJECT_DIR$/！" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -117,7 +117,7 @@
       <updated>1609242845316</updated>
       <workItem from="1609242847909" duration="3341000" />
       <workItem from="1609850806574" duration="1201000" />
-      <workItem from="1610071047400" duration="8923000" />
+      <workItem from="1610071047400" duration="11630000" />
     </task>
     <servers />
   </component>
