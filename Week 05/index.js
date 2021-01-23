@@ -1,15 +1,15 @@
 let callbacks = new Map();
-
+let reactivities = new Map();
 let usedReactivities = [];
 let object = {
-    a: 1,
+    a: { b: 1 },
     b: 2,
 }
 
 let po = reactive(object);
 
 effect(() => {
-    console.log(po.a);
+    console.log(po.a.b);
 })
 
 function effect(callback) {
@@ -29,7 +29,10 @@ function effect(callback) {
 }
 
 function reactive(obj) {
-    return new Proxy(obj, {
+    if (reactivities.has(obj)) {
+        return reactivities.get(obj);
+    }
+    let proxy = new Proxy(obj, {
         set(obj, prop, val) {
             obj[prop] = val;
             if (callbacks.get(obj)) {
@@ -44,9 +47,15 @@ function reactive(obj) {
 
         get(obj, prop) {
             usedReactivities.push([obj, prop]);
+            if (typeof obj[prop] === 'object') {
+                return reactive(obj[prop])
+            }
             return obj[prop];
         }
-    })
+    });
+
+    reactivities.set(obj, proxy);
+    return proxy;
 }
 
 console.log(po.a);
