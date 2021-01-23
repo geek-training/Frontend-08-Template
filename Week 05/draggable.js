@@ -1,7 +1,7 @@
-let dragable = document.getElementById('dragable');
+let draggable = document.getElementById('draggable');
 let baseX = 0, baseY = 0;
 
-dragable.addEventListener('mousedown', function (event) {
+draggable.addEventListener('mousedown', function (event) {
 
     let startX = event.clientX, startY = event.clientY;
 
@@ -12,9 +12,9 @@ dragable.addEventListener('mousedown', function (event) {
         document.removeEventListener('mouseup', up);
     };
     let move = event => {
-        // dragable.style.transform = `translate(${baseX + event.clientX - startX}px, ${baseY + event.clientY - startY}px)`;
+        // draggable.style.transform = `translate(${baseX + event.clientX - startX}px, ${baseY + event.clientY - startY}px)`;
         let range = getNearest(event.clientX, event.clientY);
-        range.insertNode(dragable);
+        range.insertNode(draggable);
     };
     document.addEventListener('mousemove', move);
     document.addEventListener('mouseup', up);
