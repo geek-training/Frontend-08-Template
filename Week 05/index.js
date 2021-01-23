@@ -1,13 +1,26 @@
+let callbacks = [];
 let object = {
     a: 1,
     b: 2,
+}
+
+let po = reactive(object);
+
+effect(() => {
+    console.log(po.a);
+})
+
+function effect(callback) {
+    callbacks.push(callback);
 }
 
 function reactive(obj) {
     return new Proxy(obj, {
         set(obj, prop, val) {
             obj[prop] = val;
-            console.log(obj, prop, val);
+            for (let callback of callbacks) {
+                callback();
+            }
             return obj[prop];
         },
 
@@ -17,5 +30,3 @@ function reactive(obj) {
         }
     })
 }
-
-let po = reactive(object);
