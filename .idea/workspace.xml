@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Week 04/wildcard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Week 05/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Week 05/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 04/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Week 04/NOTE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 04/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Week 04/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 04/kmp.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 04/kmp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week 05/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 05/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,12 +44,6 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="321" />
-    <option name="y" value="36" />
-    <option name="width" value="1344" />
-    <option name="height" value="877" />
   </component>
   <component name="ProjectId" id="1mlbHaChkIVuwbJrK9Ll279FMoV" />
   <component name="ProjectViewState">
