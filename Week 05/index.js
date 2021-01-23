@@ -3,9 +3,19 @@ let object = {
     b: 2,
 }
 
-let po = new Proxy(object, {
-    set(obj, prop, val) {
-        console.log(obj, prop, val);
-    }
-});
+function reactive(obj) {
+    return new Proxy(obj, {
+        set(obj, prop, val) {
+            obj[prop] = val;
+            console.log(obj, prop, val);
+            return obj[prop];
+        },
 
+        get(obj, prop) {
+            console.log(obj, prop);
+            return obj[prop];
+        }
+    })
+}
+
+let po = reactive(object);
