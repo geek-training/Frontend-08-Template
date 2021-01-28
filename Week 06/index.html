@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxy与双向绑定</title>
+  <style>
+    .wrapper {
+      width: 210px;
+      margin: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .user {
+      width: 100%;
+      height: 100px;
+      background: url("./img/user.jpeg") no-repeat 50% 50%;
+      background-size: contain;
+      color: green;
+    }
+    .life label {
+      width: 70px;
+    }
+    .life input {
+      width: 130px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="user"></div>
+  <div class="life">
+    <label for="life">生命值：</label>
+    <input id="life" type="range" min=0 max=100 value=100 disabled>
+  </div>
+  <button id="bite">狗狗咬一口</button>
+</div>
+<script src="index.js" type="application/javascript"></script>
+</body>
+</html>
