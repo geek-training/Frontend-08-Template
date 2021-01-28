@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UTF-8 Practice</title>
+</head>
+<body>
+<script type="application/javascript">
+  function encodeUtf8(str) {
+    const code = encodeURIComponent(str);
+    const bytes = [];
+    let encoded = '';
+    for (let i = 0; i < code.length; i++) {
+      const c = code.charAt(i);
+      if (c === '%') {
+        const hex = code.charAt(i + 1) + code.charAt(i + 2);
+        const hexVal = parseInt(hex, 16);
+
+        encoded += hex;
+        bytes.push(hexVal);
+
+        i += 2;
+      } else bytes.push(c.charCodeAt(0));
+    }
+    console.log('码点值：', bytes);
+    console.log('utf8编码：', encoded);
+    return encoded;
+  }
+
+  console.log(encodeUtf8('一'));
+</script>
+</body>
+</html>
