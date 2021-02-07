@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Week 07/conversion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 07/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 07/realm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 06/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/Week 06/NOTE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 01/JavaScript.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/JavaScript.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +59,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week 06" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week 07" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -72,11 +76,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Week 07" />
       <recent name="$PROJECT_DIR$/Week 06" />
       <recent name="$PROJECT_DIR$/Week 05" />
       <recent name="$PROJECT_DIR$/Week 04" />
       <recent name="$PROJECT_DIR$/Week 03" />
-      <recent name="$PROJECT_DIR$/Week 02" />
     </key>
   </component>
   <component name="RunManager">
