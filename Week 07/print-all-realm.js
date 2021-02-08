@@ -58,7 +58,7 @@ for(let i = 0; i < objects.length; i++) {
     let o = objects[i]
     for(let p of Object.getOwnPropertyNames(o)) {
         let d = Object.getOwnPropertyDescriptor(o, p)
-        if (d.value !== null && typeof d.value === "function") {
+        if (d.value !== null && (typeof d.value === "function" || typeof d.value === "object")) {
             if (!set.has(d.value)) {
                 set.add(d.value);
                 objects.push(d.value);
