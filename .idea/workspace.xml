@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Week 07/realm-g6.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 07/init-data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 07/print-all-realm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 07/print-all-realm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 07/realm-g6-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 07/realm-g6-tree.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Week 07/realm-g6.html" beforeDir="false" afterPath="$PROJECT_DIR$/Week 07/realm-g6.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,10 +167,15 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="1720" height="897" key="DiffContextDialog" timestamp="1611390462590">
-      <screen x="0" y="23" width="1920" height="1097" />
+    <state x="100" y="123" width="1720" height="899" key="DiffContextDialog" timestamp="1612764593602">
+      <screen x="0" y="23" width="1920" height="1099" />
     </state>
     <state x="100" y="123" width="1720" height="897" key="DiffContextDialog/0.23.1920.1097@0.23.1920.1097" timestamp="1611390462590" />
+    <state x="100" y="123" width="1720" height="899" key="DiffContextDialog/0.23.1920.1099@0.23.1920.1099" timestamp="1612764593602" />
+    <state x="719" y="281" key="RollbackChangesDialog" timestamp="1612764382152">
+      <screen x="0" y="23" width="1920" height="1099" />
+    </state>
+    <state x="719" y="281" key="RollbackChangesDialog/0.23.1920.1099@0.23.1920.1099" timestamp="1612764382152" />
     <state x="371" y="161" width="1549" height="897" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1612693128504">
       <screen x="0" y="23" width="1920" height="1099" />
     </state>
