@@ -110,26 +110,34 @@ function initData() {
 
 
 
-function formatData(temp) {
-    for (let key of Object.keys(temp)) {
-        const currentObj = temp[key];
-        if (Object.keys(currentObj).length === 0) {
-            return {
-                id: key,
-                children: []
-            };
-        }
-        return {
-            id: key,
-            children: formatData(temp[key]),
+function formatData(obj) {
+    console.log(obj);
+    const result = {};
+    if (typeof obj === 'object') {
+        if (Object.keys(obj).length === 1 ) {
+            for (let key of Object.keys(obj)) {
+                result.id = key;
+                result.children = [];
+                const currentObj = obj[key];
+                result.children = formatData(currentObj);
+            }
+            return result;
+        } else {
+            const result = [];
+            for (let key of Object.keys(obj)) {
+                result.push({
+                    id: key,
+                    children: formatData(obj[key]),
+                })
+            }
+            return result;
         }
     }
 }
 
 const graph = initG6Tree();
 initData();
-const result =  formatData(temp);
-console.log(temp);
+const result =  formatData({ 'window': temp });
 console.log(result);
-// graph.data(graphData);
-// graph.render();
+graph.data(graphData);
+graph.render();
