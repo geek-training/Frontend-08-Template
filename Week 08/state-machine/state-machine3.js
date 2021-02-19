@@ -1,0 +1,51 @@
+/**
+ * 查找字符串中是否存在 abababx
+ */
+
+function match(source) {
+    let state = start;
+    for (let c of source) {
+        state = state(c);
+    }
+    return state === end;
+}
+console.log(match('abababababx'));
+
+function start(c) {
+    if (c === 'a') return foundA;
+    return start;
+}
+
+function end() {
+    return end;
+}
+
+function foundA(c) {
+    if (c === 'b') return foundB;
+    return start;
+}
+
+function foundB(c) {
+    if (c === 'a') return foundA2;
+    return start(c);
+}
+
+function foundA2(c) {
+    if (c === 'b') return foundB2;
+    return start(c);
+}
+
+function foundB2(c) {
+    if (c === 'a') return foundA3;
+    return foundB(c);
+}
+
+function foundA3(c) {
+    if (c === 'b') return foundB3;
+    return foundA2(c);
+}
+
+function foundB3(c) {
+    if (c === 'x') return end;
+    return foundB2(c);
+}
