@@ -11,7 +11,7 @@ class Request {
         /**
          * Content-Type 是必须项
          */
-        if (this.headers['Content-Type']) {
+        if (!this.headers['Content-Type']) {
             this.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         }
 
@@ -54,9 +54,7 @@ class Request {
     }
 
     toString() {
-        return `${this.method} ${this.path} HTTP/1.1\r 
-        ${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\n')}\r
-        ${this.bodyText}`;
+        return `${this.method} ${this.path} HTTP/1.1\r\n${Object.keys(this.headers).map(key => `${key}: ${this.headers[key]}`).join('\r\n')}\r\n\r\n${this.bodyText}`;
     }
 }
 
@@ -77,9 +75,9 @@ class ResponseParser {
         this.headerValue = '';
         this.bodyParser = null;
     }
-    receive(string) {
-        for(let i = 0; i < string.length; i++) {
-            this.receiveChar(string.chartAt(i));
+    receive(str) {
+        for(let i = 0; i < str.length; i++) {
+            this.receiveChar(str.chartAt(i));
         }
     }
     receiveChar(char) {

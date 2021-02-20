@@ -6,7 +6,7 @@ http.createServer((request, response) => {
     request.on('error', (error) => {
         console.error(error);
     }).on('data', (chunk) => {
-        body.push(chunk.toString());
+        body.push(chunk);
     }).on('end', () => {
         body = Buffer.concat(body).toString();
         console.log('body:', body);
