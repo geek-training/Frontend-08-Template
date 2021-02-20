@@ -125,7 +125,7 @@ class ResponseParser {
             }
         } else if(this.current === this.WAITING_BODY) {
             console.log(char)
-            this.bodyParser.receiveChar(char);
+            this.bodyParser && this.bodyParser.receiveChar(char);
         }
     }
 
