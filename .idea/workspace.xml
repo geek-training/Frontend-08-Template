@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Week 08/state-machine/kmp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 08/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 08/client.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +93,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -110,7 +121,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -125,6 +136,7 @@
       <workItem from="1609850806574" duration="1201000" />
       <workItem from="1610071047400" duration="11715000" />
       <workItem from="1611379208130" duration="965000" />
+      <workItem from="1613800157169" duration="1156000" />
     </task>
     <servers />
   </component>
@@ -158,11 +170,16 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="1720" height="899" key="DiffContextDialog" timestamp="1613703293592">
-      <screen x="0" y="23" width="1920" height="1099" />
+    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog" timestamp="1613806787614">
+      <screen x="0" y="23" width="1920" height="1101" />
     </state>
     <state x="100" y="123" width="1720" height="897" key="DiffContextDialog/0.23.1920.1097@0.23.1920.1097" timestamp="1611390462590" />
     <state x="100" y="123" width="1720" height="899" key="DiffContextDialog/0.23.1920.1099@0.23.1920.1099" timestamp="1613703293592" />
+    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1613806787614" />
+    <state x="950" y="341" key="MultipleFileMergeDialog" timestamp="1613800164587">
+      <screen x="0" y="23" width="1920" height="1101" />
+    </state>
+    <state x="950" y="341" key="MultipleFileMergeDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1613800164587" />
     <state x="719" y="281" key="RollbackChangesDialog" timestamp="1612769629219">
       <screen x="0" y="23" width="1920" height="1099" />
     </state>
@@ -175,18 +192,6 @@
       <screen x="0" y="23" width="1920" height="1099" />
     </state>
     <state x="1358" y="306" key="search.everywhere.popup/0.23.1920.1099@0.23.1920.1099" timestamp="1612694031147" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Week 08/client.js</url>
-          <line>81</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
