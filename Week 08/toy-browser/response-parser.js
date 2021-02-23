@@ -27,7 +27,7 @@ const ResponseParser =  class {
             if(char === '\r') {
                 this.current = this.WAITING_STATUS_LINE_END;
             } else {
-                this.statusLine += char;
+                this.statusline += char;
             }
         } else if (this.current === this.WAITING_STATUS_LINE_END) {
             if(char === '\n') {
@@ -51,7 +51,7 @@ const ResponseParser =  class {
         } else if(this.current === this.WAITING_HEADER_VALUE) {
             if(char === '\r') {
                 this.current = this.WAITING_HEADER_LINE_END;
-                this.headers[this.headName] = this.headerValue;
+                this.headers[this.headerName] = this.headerValue;
                 this.headerName = "";
                 this.headerValue = "";
             } else {
