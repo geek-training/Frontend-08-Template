@@ -1,4 +1,4 @@
-const ChunckedBodyParser = require('./trunked-body-parser');
+const TrunkedBodyParser = require('./trunked-body-parser');
 
 const ResponseParser =  class {
     constructor() {
