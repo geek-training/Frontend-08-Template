@@ -15,6 +15,10 @@ function data(c) {
         return ;
     } else {
         // 文本节点
+        emit({
+           type: 'text',
+           content: c,
+        });
         return data;
     }
 }
@@ -28,9 +32,13 @@ function tagOpen(c) {
     if (c == '/') {
         return endTagOpen;
     } else if (c.match(/^[a-zA-Z]$/)) {
+        currentToken = {
+            type: 'startTag',
+            tagName: '',
+        }
         return tagName(c);
     } else {
-
+        return ;
     }
 
 }
@@ -41,6 +49,10 @@ function tagOpen(c) {
  */
 function endTagOpen(c) {
     if(c.match(/^[a-zA-Z]$/)) {
+        currentToken = {
+            type: 'endTag',
+            tagName: '',
+        }
         return tagName(c);
     } else if (c == '>') {
         // 报错
@@ -61,8 +73,10 @@ function tagName(c) {
     } else if(c == '/') {
         return selfClosingStartTag;
     } else if(c.match(/^[a-zA-Z]$/)) {
+        currentToken.tagName += c;
         return tagName;
     } else if (c == '>') {
+        emit(currentToken);
         /**
          * 结束标签回到data状态解析下一个标签
          */
@@ -87,6 +101,7 @@ function beforeAttributeName(c) {
 function selfClosingStartTag(c) {
     if(c == '>') {
         currentToken.isSelfClosing = true;
+        emit(currentToken);
         return data;
     } else if (c == EOF) {
 
