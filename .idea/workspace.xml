@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 09/toy-browser/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 09/toy-browser/parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 09/toy-browser/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 09/toy-browser/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +47,6 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="416" />
-    <option name="y" value="23" />
-    <option name="width" value="1024" />
-    <option name="height" value="877" />
   </component>
   <component name="ProjectId" id="1mlbHaChkIVuwbJrK9Ll279FMoV" />
   <component name="ProjectViewState">
@@ -175,16 +170,16 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog" timestamp="1613806787614">
+    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog" timestamp="1614219144145">
       <screen x="0" y="23" width="1920" height="1101" />
     </state>
     <state x="100" y="123" width="1720" height="897" key="DiffContextDialog/0.23.1920.1097@0.23.1920.1097" timestamp="1611390462590" />
     <state x="100" y="123" width="1720" height="899" key="DiffContextDialog/0.23.1920.1099@0.23.1920.1099" timestamp="1613703293592" />
-    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1613806787614" />
-    <state x="950" y="341" key="MultipleFileMergeDialog" timestamp="1613800164587">
+    <state x="100" y="123" width="1720" height="901" key="DiffContextDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1614219144145" />
+    <state x="950" y="341" key="MultipleFileMergeDialog" timestamp="1614219118548">
       <screen x="0" y="23" width="1920" height="1101" />
     </state>
-    <state x="950" y="341" key="MultipleFileMergeDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1613800164587" />
+    <state x="950" y="341" key="MultipleFileMergeDialog/0.23.1920.1101@0.23.1920.1101" timestamp="1614219118548" />
     <state x="719" y="281" key="RollbackChangesDialog" timestamp="1612769629219">
       <screen x="0" y="23" width="1920" height="1099" />
     </state>

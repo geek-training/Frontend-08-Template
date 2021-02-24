@@ -14,7 +14,11 @@ let currentToken = null;
 let currentAttribute = null;
 
 function emit(token) {
-    console.log(token);
+    if (token.type == 'text') {
+
+    } else {
+        console.log(token);
+    }
 }
 
 function data(c) {
@@ -82,9 +86,7 @@ function endTagOpen(c) {
  * 前一状态：tagOpen，endTagOpen
  */
 function tagName(c) {
-
     if(c.match(REG_BLANK_CHARACTER)) {
-        console.log('+++', currentToken);
         return beforeAttributeName;
     } else if(c == '/') {
         return selfClosingStartTag;
@@ -122,7 +124,6 @@ function selfClosingStartTag(c) {
  * 前一状态 tagName, unquotedAttributeValue, afterQuotedAttributeValue
  */
 function beforeAttributeName(c) {
-    console.log('current===', currentToken);
     if(c.match(REG_BLANK_CHARACTER)) {
         return beforeAttributeName;
     } else if (c == '/' || c == '>' || c == EOF) {
@@ -143,19 +144,14 @@ function beforeAttributeName(c) {
  * eg: <div title='hello div'> t 开始进入该方法
  */
 function attributeName(c) {
-    debugger
     if (c.match(REG_BLANK_CHARACTER) || c == '/' || c == EOF) {
         return afterAttributeName(c);
     } else if (c == '=') {
         return beforeAttributeValue;
-    } else if ('\u0000') {
+    } else if (c == '\u0000') {
 
     } else if (c == '"' || c == '\'' || c == '<') {
-
     } else {
-        console.log(currentToken, '---', currentAttribute);
-
-        debugger
         currentAttribute.name += c;
         return attributeName;
     }
@@ -169,7 +165,7 @@ function beforeAttributeValue (c) {
         return doubleQuotedAttributeValue;
     } else if (c == '\'') {
         return singleQuotedAttributeValue;
-    } else if ('>') {
+    } else if (c == '>') {
 
     } else {
         return unquotedAttributeValue(c);
@@ -180,7 +176,7 @@ function doubleQuotedAttributeValue(c) {
     if (c == '"') {
         currentToken[currentAttribute.name] = currentAttribute.value;
         return afterQuotedAttributeValue;
-    } else if ('\u0000') {
+    } else if (c == '\u0000') {
 
     } else if (c == EOF) {
 
@@ -194,7 +190,7 @@ function singleQuotedAttributeValue(c) {
     if (c == '\'') {
         currentToken[currentAttribute.name] = currentAttribute.value;
         return afterQuotedAttributeValue;
-    } else if ('\u0000') {
+    } else if (c == '\u0000') {
 
     } else if (c == EOF) {
 
@@ -215,9 +211,9 @@ function unquotedAttributeValue(c) {
         currentToken[currentAttribute.name] = currentAttribute.value;
         emit(currentToken);
         return data;
-    } else if ('\u0000') {
+    } else if (c == '\u0000') {
 
-    } else if ('"' || c == '\'' || c == '<' || c == '=' || c == '`') {
+    } else if (c == '"' || c == '\'' || c == '<' || c == '=' || c == '`') {
 
     } else if (c == EOF) {
 

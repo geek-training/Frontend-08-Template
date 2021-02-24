@@ -11,14 +11,14 @@ const server = http.createServer((request, response) => {
 <html maa=a>
     <head>
         <style>
-        body div #myId {
-            width: 100px;
-            background-color: #00ff00;
-        }
-        body div img {
-        width: 30px;
-        background-color: #f11;
-        }
+            body div #myId {
+                width: 100px;
+                background-color: #00ff00;
+            }
+            body div img {
+                width: 30px;
+                background-color: #f11;
+            }
         </style>
     </head>
     <body>
