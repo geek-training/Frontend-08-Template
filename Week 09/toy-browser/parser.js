@@ -12,13 +12,49 @@ const EOF = Symbol('EOF');
 
 let currentToken = null;
 let currentAttribute = null;
-
+let stack = [{type: 'document', children: []}];
 function emit(token) {
     if (token.type == 'text') {
+        return ;
+    } 
 
-    } else {
-        console.log(token);
+    let top = stack[stack.length - 1];
+
+    if (token.type == 'startTag') {
+        let element = {
+            type: 'element',
+            children: [],
+            attributes: []
+        };
+
+        element.tagName = token.tagName;
+
+        for (let p in token) {
+            if (p != 'type' && p != 'tagName') {
+                element.attributes.push({
+                    name: p,
+                    value: token[p]
+                });
+            }
+        }
+
+        top.children.push(element);
+        element.parent = top;
+
+        if (!token.isSelfClosing) {
+            stack.push(element);
+        }
+
+        currentTextNode = null;
+    } else if (token.type == 'endTag') {
+        if (top.tagName != token.tagName) {
+            throw new Error(`Tag start end doesn't match!`);
+        } else {
+            stack.pop();
+        }
+        currentTextNode = null;
     }
+    
 }
 
 function data(c) {
@@ -273,5 +309,5 @@ module.exports.parseHTML = function parseHTML(html) {
         state = state(c);
     }
     state = state(EOF);
-    console.log('state:', state);
+    console.log('stack:', stack);
 }
