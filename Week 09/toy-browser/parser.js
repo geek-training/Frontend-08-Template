@@ -1,3 +1,5 @@
+const css = require('css');
+
 /**
  * tagName以空白符结束
  * html中有效的4种空白符
@@ -14,6 +16,14 @@ let currentToken = null;
 let currentAttribute = null;
 let stack = [{type: 'document', children: []}];
 let currentTextNode = null;
+
+
+let rules = [];
+function addCssRules(text) {
+    let ast = css.parse(text);
+    console.log(JSON.stringify(ast, null, '   '));
+    rules.push(...ast.stylesheet.rules);
+}
 
 function emit(token) {
     let top = stack[stack.length - 1];
@@ -48,6 +58,10 @@ function emit(token) {
         if (top.tagName != token.tagName) {
             throw new Error(`Tag start end doesn't match!`);
         } else {
+            if (top.tagName === 'style') {
+                /** 遇到style标签时，执行添加 css 规则的操作  */
+                addCssRules (top.children[0].content);
+            }
             stack.pop();
         }
         currentTextNode = null;
