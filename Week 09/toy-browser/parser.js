@@ -25,6 +25,12 @@ function addCssRules(text) {
     rules.push(...ast.stylesheet.rules);
 }
 
+function computeCSS(element) {
+    console.log(rules);
+    console.log('compute css for element', element);
+    let elements = stack.slice().reverse();
+}
+
 function emit(token) {
     let top = stack[stack.length - 1];
 
@@ -45,6 +51,8 @@ function emit(token) {
                 });
             }
         }
+
+        computeCSS(element);
 
         top.children.push(element);
         element.parent = top;
