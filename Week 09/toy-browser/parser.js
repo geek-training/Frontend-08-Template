@@ -29,6 +29,7 @@ function addCssRules(text) {
  * div
  * .name
  * #title
+ * 选做：支持 class='img myImg'
  */
 function match(element, selector) {
     if (!selector || !element.attributes) {
@@ -38,13 +39,20 @@ function match(element, selector) {
     const startChar = selector.charAt(0);
     if (startChar == '#') {
         const attr = element.attributes.filter(attr => attr.name === 'id');
-        if (attr && attr.value === selector.replace('#', '')) {
+        if (attr.length !== 0 && attr[0].value === selector.replace('#', '')) {
             return true;
         }
     } else if (startChar == '.') {
-        const attr = element.attributes.filter(attr => attr.name === 'class');
-        if (attr && attr.value === selector.replace('.', '')) {
-            return true;
+        const classAttr = element.attributes.filter(attr => attr.name === 'class');
+        if (!classAttr || classAttr.length === 0) {
+            return false;
+        }
+
+        const classArray = classAttr[0].value.split(' ');
+        for (let i = 0; i < classArray.length; i++) {
+            if (classArray[i] === selector.replace('.', '')) {
+                return true;
+            }
         }
     } else {
         if (element.tagName === selector) {
@@ -55,8 +63,6 @@ function match(element, selector) {
 }
 
 function computeCSS(element) {
-    console.log('rules:', rules);
-    console.log('current element:', element);
     let parentElements = stack.slice().reverse();
     if (!element.computedStyle) {
         element.computedStyle = {};
@@ -89,7 +95,7 @@ function computeCSS(element) {
         }
         if (matched) {
             /** 如果匹配到，我们要加入 */
-            console.log('Element', element, 'matched rule', rule);
+            console.log('Matched ------ Element', element, 'matched rule', rule);
         }
     }
 }

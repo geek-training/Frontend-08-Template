@@ -15,7 +15,7 @@ const server = http.createServer((request, response) => {
                 width: 100px;
                 background-color: #00ff00;
             }
-            body div img {
+            body div .myImg {
                 width: 30px;
                 background-color: #f11;
             }
@@ -24,7 +24,7 @@ const server = http.createServer((request, response) => {
     <body>
         <div>
             <img id="myId" />
-            <img />
+            <img class="img myImg" />
         </div>
     </body>
 </html>
