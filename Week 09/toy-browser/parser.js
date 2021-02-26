@@ -21,14 +21,77 @@ let currentTextNode = null;
 let rules = [];
 function addCssRules(text) {
     let ast = css.parse(text);
-    console.log(JSON.stringify(ast, null, '   '));
     rules.push(...ast.stylesheet.rules);
 }
 
+/**
+ * 只考虑简单选择器 
+ * div
+ * .name
+ * #title
+ */
+function match(element, selector) {
+    if (!selector || !element.attributes) {
+        return false;
+    }
+
+    const startChar = selector.charAt(0);
+    if (startChar == '#') {
+        const attr = element.attributes.filter(attr => attr.name === 'id');
+        if (attr && attr.value === selector.replace('#', '')) {
+            return true;
+        }
+    } else if (startChar == '.') {
+        const attr = element.attributes.filter(attr => attr.name === 'class');
+        if (attr && attr.value === selector.replace('.', '')) {
+            return true;
+        }
+    } else {
+        if (element.tagName === selector) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function computeCSS(element) {
-    console.log(rules);
-    console.log('compute css for element', element);
-    let elements = stack.slice().reverse();
+    console.log('rules:', rules);
+    console.log('current element:', element);
+    let parentElements = stack.slice().reverse();
+    if (!element.computedStyle) {
+        element.computedStyle = {};
+    }
+
+    for (let rule of rules) {
+        /**
+         * body div #myId
+         * ['#myId', 'div', 'body']
+         * 如果第一个 #myId 没匹配上就跳过本次循环
+         */
+        let selectorParts = rule.selectors[0].split(' ').reverse();
+
+        if (!match(element, selectorParts[0])) {
+            continue;
+        }
+
+        /**
+         * #myId 已经匹配上来，接下来从 selectorParts[1] 开始去逐层匹配当前元素的父元素
+         */
+        let j = 1;
+        for (let i = 0; i < parentElements.length; i++) {
+            if (match(parentElements[i], selectorParts[j])) {
+                j++;
+            }
+        }
+        /** 【‘#myId', 'div', 'body'】每项都匹配到了，则为true */
+        if (j >= selectorParts.length) {
+            matched = true;
+        }
+        if (matched) {
+            /** 如果匹配到，我们要加入 */
+            console.log('Element', element, 'matched rule', rule);
+        }
+    }
 }
 
 function emit(token) {
