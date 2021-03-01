@@ -20,10 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db431971-7c27-4385-ba21-5e03b18c3406" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/parser/CSSParser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/parser/parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/request/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/request/response-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/request/trunked-body-parser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Week 10/toy-browser/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/Week 01/新-前端知识架构.xmind" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 09/toy-browser/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 09/toy-browser/parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Week 09/toy-browser/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Week 09/toy-browser/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 09/test-class.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Week 09/test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +69,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week 08" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Week 10" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -95,13 +103,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,7 +133,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -139,11 +149,12 @@
       <workItem from="1610071047400" duration="11715000" />
       <workItem from="1611379208130" duration="965000" />
       <workItem from="1613800157169" duration="1293000" />
+      <workItem from="1614578141899" duration="232000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
