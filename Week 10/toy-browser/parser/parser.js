@@ -1,4 +1,5 @@
 const CSSParser = require("./CSSParser");
+const layout = require("../layout/index.js");
 /**
  * tagName以空白符结束
  * html中有效的4种空白符
@@ -57,6 +58,7 @@ function emit(token) {
         /** 遇到style标签时，执行添加 css 规则的操作  */
         MyCSSParser.addCssRules(top.children[0].content);
       }
+      layout(top);
       stack.pop();
     }
     currentTextNode = null;
