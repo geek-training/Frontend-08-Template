@@ -435,5 +435,7 @@ module.exports.parseHTML = function parseHTML(html) {
     state = state(c);
   }
   state = state(EOF);
+  console.log("parser stack:", stack);
+  debugger
   return stack;
 };
