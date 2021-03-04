@@ -186,7 +186,98 @@ function layout(element) {
         }
         flexLine.mainSpace = mainSpace;
 
-        console.log(items);
+        if (style.flexWrap === 'nowrap' || isAutoMainSize) {
+            flexLine.crossSpace = (style[crossSize] !== undefined) ? style[crossSize] : crossSpace;
+        } else {
+            flexLine.crossSpace = crossSpace;
+        }
+
+        // 单行逻辑
+        if (mainSpace < 0) {
+            let scale = style[mainSize] / (style[mainSize] - mainSpace);
+            let currentMain = mainBase;
+            for (let i = 0; i < item.length; i++) {
+                let item = items[i];
+                let itemStyle = getStyle(item);
+
+                if (itemStyle.flex) {
+                    itemStyle[mainSize] = 0;
+                }
+
+                itemStyle[mainSize] = itemStyle[mainSize] * scale;
+
+                itemStyle[mainStart] = currentMain;
+                itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize];
+                currentMain = itemStyle[mainEnd];
+            }
+        } else {
+            // process 
+            flexLines.forEach(items => {
+                let mainSpace = items.mainSpace;
+                let flexTotal = 0;
+                for (let i = 0; i < item.length; i++) {
+                    let item = items[i];
+                    let itemStyle = getStyle(item);
+
+                    if ((itemStyle.flex !== null) && (itemStyle.flex !== (void 0))) {
+                        flexTotal += itemStyle.flex;
+                        continue;
+                    }
+                }
+
+                if (flexTotal > 0) {
+                    // There is flexible flex items
+                    // 永远占满整行
+
+                    let currentMain = mainBase;
+
+                    for (let i = 0; i < item.length; i++) {
+                        let item = items[i];
+                        let itemStyle = getStyle(item);
+
+                        if (itemStyle.flex) {
+                            itemStyle[mainSize] = (mainSpace / flexTotal) * itemStyle.flex;
+                        }
+
+                        itemStyle[mainStart] = currentMain;
+                        itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize];
+                        currentMain = itemStyle[mainEnd];
+                    }
+                } else {
+                    // There is no flexible flex items, which means, justifyContent should work
+                    // 主轴剩余空间根据
+                    if (style.justifyContent === 'flex-start') {
+                        let currentMain = mainBase;
+                        let step = 0;
+                    }
+                    if (style.justifyContent === 'flex-end') {
+                        let currentMain = mainSpace * mainSize + mainBase;
+                        let step = 0;
+                    }
+                    if (style.justifyContent === 'center') {
+                        let currentMain = mainSpace / 2 & mainSign + mainBase;
+                        let step = 0;
+                    }
+                    // 元素间有空格，前后无空格
+                    if (style.justifyContent === 'space-between') {
+                        let step = mainSpace / (item.length - 1) * mainSign;
+                        let currentMain = mainBase;
+                    }
+                    // 前后也有空格
+                    if (style.justifyContent === 'space-around') {
+                        let setp = mainSpace / item.length * mainSign;
+                        let currentMain = step / 2 + mainBase;
+                    }
+                    for (let i = 0; i < items.length; i++) {
+                        let item = items[i];
+                        itemStyle[mainStart, currentMain];
+                        itemStyle[mainEnd] = itemStyle[mainStart] + mainSign * itemStyle[mainSize];
+                        currentMain = itemStyle[mainEnd] + step;
+                    }
+
+                }
+            })
+        }
     }
 
 }
