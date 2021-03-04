@@ -11,20 +11,23 @@ const server = http.createServer((request, response) => {
 <html maa=a>
     <head>
         <style>
-            body div #myId {
-                width: 100px;
-                background-color: #00ff00;
+            #container {
+                width: 500px;
+                height: 500px;
+                display: flex;
             }
-            body div .myImg {
-                width: 30px;
-                background-color: #f11;
+            #container #myId {
+                width: 200px;
+            }
+            #container .c1 {
+                flex: 1;
             }
         </style>
     </head>
     <body>
-        <div>
-            <img id="myId" />
-            <img class="img myImg" />
+        <div id=container>
+            <div id="myId" />
+            <div class="ic1" />
         </div>
     </body>
 </html>
