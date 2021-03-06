@@ -1,3 +1,4 @@
+
 /**
  * 对style进行预处理
  */
@@ -363,7 +364,7 @@ function layout(element) {
          * mainSpace 大于0 的情况
          */
         flexLines.forEach(function (items) {
-            
+
             let mainSpace = items.mainSpace;
             let flexTotal = 0;
             for (let i = 0; i < items.length; i++) {
@@ -580,5 +581,4 @@ function layout(element) {
     console.log('items: ', items);
 }
 
-
-module.exprots = layout;
+module.exports = layout;
