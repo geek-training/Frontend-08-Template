@@ -310,5 +310,5 @@ module.exports.parseHTML = function parseHTML(html) {
     state = state(c);
   }
   state = state(EOF);
-  return stack;
+  return stack[0];
 };

@@ -6,7 +6,7 @@ const server = http.createServer((request, response) => {
     response.setHeader('Content-Type', 'text/html');
     response.setHeader('X-Foo', 'bar');
     response.writeHead(200, {'Content-Type': 'text/plain'});
-    resp.end(
+    response.end(
         `<html lang="en">
         <head>
           <style>

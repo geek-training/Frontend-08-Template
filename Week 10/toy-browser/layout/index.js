@@ -214,8 +214,7 @@ function layout(element) {
      * crossSpace: 交叉轴剩余空间
      */
     let mainSpace = elementStyle[mainSize];
-    // let crossSpace = 0;
-    crossSpace = 0;
+    let crossSpace = 0;
 
     /**
      * 插入元素进 flexLines
@@ -460,7 +459,7 @@ function layout(element) {
      * align-items, alignself
      */
 
-    let crossSpace;
+    // let crossSpace;
 
     /**
      * 如果没有定义容器的高，空隙为0，元素的高为 元素高 + 行空隙
@@ -578,7 +577,6 @@ function layout(element) {
         }
         crossBase += crossSign * (lineCrossSize + step);
     });
-    console.log('items: ', items);
 }
 
 module.exports = layout;
