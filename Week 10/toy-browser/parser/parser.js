@@ -41,6 +41,7 @@ function emit(token) {
     }
 
     MyCSSParser.computeCSS(element, stack);
+    layout(top);
 
     top.children.push(element);
     element.parent = top;
