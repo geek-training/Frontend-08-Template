@@ -132,6 +132,7 @@ Toy-Browser只挑选其中一部分状态，完成一个最简版本
 ### CSS computing
 
 第一步
+
 遇到style标签时，我们吧CSS规则保存起来
 
 这里我们调用了CSS Parser 来分析CSS规则
