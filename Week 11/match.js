@@ -63,3 +63,4 @@ function match(selector, element) {
 }
 
 console.log(match('div #second.item', document.getElementById('second')));
+console.log(match('div #second.item', document.getElementById('third')));
