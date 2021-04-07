@@ -15,7 +15,7 @@
   \*****************/
 /***/ (() => {
 
-eval("for (var _i = 0, _arr = [1, 2, 3]; _i < _arr.length; _i++) {\n  var i = _arr[_i];\n  console.log(i);\n}\n\nvar a = /*#__PURE__*/React.createElement(\"div\", null);\n\n//# sourceURL=webpack://week-14/./main.js?");
+eval("function createElement(type, attributes) {\n  var element = document.createElement(type);\n\n  for (var name in attributes) {\n    element.setAttribute(name, attributes[name]);\n  }\n\n  for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {\n    children[_key - 2] = arguments[_key];\n  }\n\n  for (var _i = 0, _children = children; _i < _children.length; _i++) {\n    var child = _children[_i];\n\n    if (typeof child === \"string\") {\n      child = document.createTextNode(child);\n    }\n\n    element.appendChild(child);\n  }\n\n  return element;\n}\n\nvar a = createElement(\"div\", {\n  id: \"a\"\n}, createElement(\"span\", null), createElement(\"span\", null), createElement(\"span\", null));\nvar b = createElement(\"div\", {\n  id: \"a\"\n}, \"Hello world!\");\ndocument.body.appendChild(a);\ndocument.body.appendChild(b);\n\n//# sourceURL=webpack://week-14/./main.js?");
 
 /***/ })
 
