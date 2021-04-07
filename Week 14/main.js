@@ -1,5 +1,10 @@
 function createElement(type, attributes, ...children) {
-    let element = document.createElement(type);
+    let element;
+    if (typeof type === "string") {
+        element = document.createElement(type);
+    } else {
+        element = new type;
+    }
     for (let name in attributes) {
         element.setAttribute(name, attributes[name]);
     }
@@ -13,15 +18,33 @@ function createElement(type, attributes, ...children) {
     return element;
 }
 
-let a = <div id="a">
+class Div {
+
+    constructor() {
+        this.root = document.createElement("div");
+    }
+
+    setAttribute(name, value) {
+        this.root.setAttribute(name, value);
+    }
+
+    appendChild(child) {
+        this.root.appendChild(child);
+    }
+
+    mountTo(parent) {
+        parent.appendChild(this.root);
+    }
+}
+
+
+let a = <Div id="a">
         <span>a</span>
         <span>b</span>
         <span>c</span>
-</div>
+</Div>
 
-let b = <div id="a">
-    Hello world!
-</div>
+// document.body.appendChild(a);
+a.mountTo(document.body);
 
-document.body.appendChild(a);
-document.body.appendChild(b);
+
