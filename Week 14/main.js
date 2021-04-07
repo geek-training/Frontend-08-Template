@@ -1,7 +1,7 @@
 function createElement(type, attributes, ...children) {
     let element;
     if (typeof type === "string") {
-        element = document.createElement(type);
+        element = new ElementWrapper(type);
     } else {
         element = new type;
     }
@@ -10,12 +10,48 @@ function createElement(type, attributes, ...children) {
     }
     for (let child of children) {
         if (typeof child === "string") {
-            child = document.createTextNode(child);
+            child = new TextWrapper(child);
         }
         element.appendChild(child);
     }
 
     return element;
+}
+
+class TextWrapper {
+    constructor(content) {
+        this.root = document.createTextNode(content);
+    }
+
+    setAttribute(name, value) {
+        this.root.setAttribute(name, value);
+    }
+
+    appendChild(child) {
+        child.mountTo(this.root);
+    }
+
+    mountTo(parent) {
+        parent.appendChild(this.root);
+    }
+}
+
+class ElementWrapper {
+    constructor(type) {
+        this.root = document.createElement(type);
+    }
+
+    setAttribute(name, value) {
+        this.root.setAttribute(name, value);
+    }
+
+    appendChild(child) {
+        child.mountTo(this.root);
+    }
+
+    mountTo(parent) {
+        parent.appendChild(this.root);
+    }
 }
 
 class Div {
@@ -29,7 +65,7 @@ class Div {
     }
 
     appendChild(child) {
-        this.root.appendChild(child);
+        child.mountTo(this.root);
     }
 
     mountTo(parent) {
