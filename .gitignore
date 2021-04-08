@@ -1,1 +1,6 @@
 ./Week 14/node_modules
+.idea
+.vscode
+.DS_Store
+Frontend-08-Template.iml
+hi.mp4
