@@ -13,6 +13,13 @@ class Carousel extends Component {
     render() {
         console.log(this.attributes.src);
         this.root = document.createElement("div");
+
+        for (let record of this.attributes.src) {
+            let child = document.createElement(img);
+            child.src = record;
+            this.root.appendChild(child);
+        }
+
         return this.root;
     }
 
