@@ -4,3 +4,7 @@
 .DS_Store
 Frontend-08-Template.iml
 hi.mp4
+
+./Week 15/package-lock.json
+./Week 15/node_modules/**
+./Week 15/dist/**
