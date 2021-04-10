@@ -15,16 +15,16 @@ let a = <Carousel src={d}/>
 a.mountTo(document.body);
 
 
-let tl = new Timeline();
-window.tl = tl;
-tl.start();
-window.animation = new Animation(
-    { set a(v) {console.log(v)}},
-    "a",
-    0,
-    100,
-    1000,
-    null
-);
+// let tl = new Timeline();
+// window.tl = tl;
+// tl.start();
+// window.animation = new Animation(
+//     { set a(v) {console.log(v)}},
+//     "a",
+//     0,
+//     100,
+//     1000,
+//     null
+// );
 
-tl.add(animation);
+// tl.add(animation);
