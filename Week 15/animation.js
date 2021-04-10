@@ -12,6 +12,11 @@ let tick = () => {
     requestAnimationFrame(tick);
 }
  */
+const TIMELINE_STATE = {
+    INITED: 'Inited',
+    PAUSED: 'Paused',
+    STARTED: 'Started',
+}
 
 const TICK = Symbol("tick");
 const TICK_HANDLER = Symbol("tick-handler");
@@ -21,11 +26,16 @@ const PAUSE_START = Symbol("pause-start");
 const PAUSE_TIME = Symbol("pause-time");
 export class Timeline {
     constructor() {
+        this.state = TIMELINE_STATE.INITED;
         this[ANIMATIONS] = new Set();
         this[START_TIME] = new Map();
     }
 
     start() {
+        if (this.state !== TIMELINE_STATE.INITED) {
+            return ;
+        }
+        this.state = TIMELINE_STATE.STARTED;
         let startTime = Date.now();
         this[PAUSE_TIME] = 0;
         this[TICK] = () => {
@@ -59,18 +69,27 @@ export class Timeline {
     get rate() {}
     */
     pause() {
+        if (this.state !== TIMELINE_STATE.STARTED) {
+            return ;
+        }
+        this.state = TIMELINE_STATE.PAUSED;
         this[PAUSE_START] = Date.now();
         cancelAnimationFrame(this[TICK_HANDLER]);
 
     }
 
     resume() {
+        if (this.state !== TIMELINE_STATE.PAUSED) {
+            return ;
+        }
+        this.state = TIMELINE_STATE.STARTED;
         this[PAUSE_TIME] += Date.now() - this[PAUSE_START];
         this[TICK]();
     }
 
     reset() {
         this.pause();
+        this.state = TIMELINE_STATE.INITED;
         let startTime = Date.now();
         this[PAUSE_START] = 0;
         this[PAUSE_TIME] = 0;
