@@ -16,16 +16,15 @@ a.mountTo(document.body);
 
 
 let tl = new Timeline();
-
-const animation = new Animation(
+window.tl = tl;
+tl.start();
+window.animation = new Animation(
     { set a(v) {console.log(v)}},
     "a",
     0,
     100,
     1000,
     null
-)
+);
 
 tl.add(animation);
-
-tl.start();
