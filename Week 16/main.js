@@ -1,6 +1,6 @@
 import {Component, createElement} from './framework.js';
 import { Carousel } from './carousel.js';
-import { Timeline, Animation } from './animation.js';
+import { Timeline, Animation } from './animation/animation.js';
 
 let d = [
     "https://static001.geekbang.org/resource/image/bb/21/bb38fb7c1073eaee1755f81131f11d21.jpg",

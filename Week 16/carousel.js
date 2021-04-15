@@ -1,4 +1,5 @@
 import { Component } from './framework.js';
+import {enableGesture} from "./gesture/gesture";
 
 export  class Carousel extends Component {
     constructor() {
@@ -21,8 +22,18 @@ export  class Carousel extends Component {
             this.root.appendChild(child);
         }
 
+        enableGesture(this.root);
+
+        let children = this.root.children;
         let position = 0;
 
+        this.root.addEventListener('pan', event => {
+            console.log(event.clientX);
+        });
+
+        /**  鼠标时间轮播  */
+
+        /**
         this.root.addEventListener('mousedown', event => {
             let children = this.root.children;
 
@@ -59,6 +70,7 @@ export  class Carousel extends Component {
             document.addEventListener('mouseup', up);
         });
 
+        */
         /*******  自动轮播  *******/
         /**
 
