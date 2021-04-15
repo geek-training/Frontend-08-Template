@@ -29,6 +29,17 @@ export  class Carousel extends Component {
 
         this.root.addEventListener('pan', event => {
             console.log(event.clientX);
+
+            let x = event.clientX - event.startX;
+            let current = position - ((x - x % 500) / 500);
+
+            for (let offset of [-1, 0, 1]) {
+                let pos = current + offset;
+                pos = (pos + children.length) % children.length;
+                children[pos].style.transition = "none";
+                children[pos].style.transform = `translateX(${- pos * 500 + offset * 500 + x % 500}px)`;
+            }
+
         });
 
         /**  鼠标时间轮播  */
