@@ -32,6 +32,12 @@ export  class Carousel extends Component {
         let children = this.root.children;
         let position = 0;
 
+
+        this.root.addEventListener('start', event => {
+            timeline.pause();
+
+        });
+
         this.root.addEventListener('pan', event => {
             console.log(event.clientX);
 
