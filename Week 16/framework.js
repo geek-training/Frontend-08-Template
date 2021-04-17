@@ -18,12 +18,14 @@ export function createElement(type, attributes, ...children) {
     return element;
 }
 
+export let STATE = Symbol('state');
 export class Component {
     constructor(type) {
+        this.attributes = Object.create(null);
     }
 
     setAttribute(name, value) {
-        this.root.setAttribute(name, value);
+        this.attributes[name] = value;
     }
 
     appendChild(child) {
@@ -31,7 +33,9 @@ export class Component {
     }
 
     mountTo(parent) {
-        console.log('--------', this.root);
+        if (!this.root) {
+            this.render();
+        }
         parent.appendChild(this.root);
     }
 }
