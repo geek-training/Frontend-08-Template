@@ -29,19 +29,25 @@ export  class Carousel extends Component {
         let timeline = new Timeline;
         timeline.start();
 
+        let handler = null;
+
         let children = this.root.children;
         let position = 0;
 
+        let t = 0;
+        let ax;
 
         this.root.addEventListener('start', event => {
             timeline.pause();
+            clearInterval(handler);
+            let progress = (Data.now() - t)/1500;
+            ax = ease(progress) * 500 - 500;
 
         });
 
         this.root.addEventListener('pan', event => {
-            console.log(event.clientX);
 
-            let x = event.clientX - event.startX;
+            let x = event.clientX - event.startX - ax;
             let current = position - ((x - x % 500) / 500);
 
             for (let offset of [-1, 0, 1]) {
@@ -54,7 +60,7 @@ export  class Carousel extends Component {
         });
 
         this.root.addEventListener('panend', event => {
-            let x = event.clientX - event.startX;
+            let x = event.clientX - event.startX - ax;
                 position = position - Math.round(x / 500);
                 for (let offset of [0, - Math.sign(Math.round(x / 500) - x + 250 * Math.sign(x))]) {
                     let pos = position + offset;
@@ -64,7 +70,7 @@ export  class Carousel extends Component {
                 }
         });
 
-         setInterval(() => {
+        let nextPicture = () => {
             let children = this.root.children;
 
             let nextIndex = (position + 1) % children.length;
@@ -72,17 +78,21 @@ export  class Carousel extends Component {
             let current = children[position];
             let next = children[nextIndex];
 
-            next.style.transition = "none";
-            next.style.transform = `translateX(${500 - nextIndex * 500}px)`
+            t = Date.now();
+
+            // next.style.transition = "none";
+            // next.style.transform = `translateX(${500 - nextIndex * 500}px)`
 
             // 创建animation
             timeline.add(new Animation(current.style, "transform",
-             - position * 500, -500 - position * 500, 500, 0, ease, v => `translateX(${v}px)`))
+             - position * 500, -500 - position * 500, 1500, 0, ease, v => `translateX(${v}px)`))
             timeline.add(new Animation(next.style, "transform",
-            500 - nextIndex * 500, - nextIndex * 500, 500, 0, ease, v => `translateX(${v}px)`));
+            500 - nextIndex * 500, - nextIndex * 500, 1500, 0, ease, v => `translateX(${v}px)`));
 
             position = nextIndex;
-        }, 3000);
+        }
+
+         handler = setInterval(nextPicture, 3000);
 
 
         /**  鼠标时间轮播  */
