@@ -21,7 +21,7 @@ module.exports = class extends Generator {
     //         message: "Would you like to enable the Cool feature?"
     //         }
     //     ]);
-    
+
     //     this.log("app name", answers.name);
     //     this.log("cool feature", answers.cool);
     // }
@@ -35,7 +35,7 @@ module.exports = class extends Generator {
               react: '^16.2.0'
             }
           };
-      
+
           // Extend or create package.json file in destination path
           this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
           this.npmInstall();
@@ -43,7 +43,7 @@ module.exports = class extends Generator {
 
     async fileSystemStep() {
         this.fs.copyTpl(
-            this.templatePath('t.html'),
+            this.templatePath('index.html.html'),
             this.destinationPath('public/index.html'),
             { title: 'Templating with Yeoman' }
           );
