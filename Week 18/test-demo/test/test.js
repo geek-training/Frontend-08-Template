@@ -1,6 +1,9 @@
 var assert = require('assert');
+//
+// var add = require('../add.js').add;
+// var mul = require('../add.js').mul;
 
-import {add} from '../add.js';
+import {add, mul} from "../add.js";
 
 
 describe('add function testing', function() {
@@ -14,5 +17,11 @@ describe('add function testing', function() {
     });
 
 });
+
+describe('mul function testing', function() {
+    it("-5*2 should be -10", function() {
+        assert.equal(mul(-5,2), -10);
+    });
+})
 
 
