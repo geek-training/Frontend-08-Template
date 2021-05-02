@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var add = require('../add.js');
+import {add} from '../add.js';
 
 
 describe('add function testing', function() {
