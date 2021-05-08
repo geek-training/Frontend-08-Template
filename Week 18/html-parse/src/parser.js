@@ -127,10 +127,6 @@ function endTagOpen(c) {
       tagName: "",
     };
     return tagName(c);
-  } else if (c == ">") {
-    // 报错
-  } else if (c == EOF) {
-    // 报错
   } else {
   }
 }

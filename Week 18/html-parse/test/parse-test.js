@@ -34,6 +34,12 @@ describe('parse html', function() {
         assert.equal(tree.children[0].children.length, 0);
     });
 
+    it("<a href=\"abc\"></a>", function() {
+        const tree = parseHTML("<a href=\"abc\"></a>");
+        assert.equal(tree.children.length, 1);
+        assert.equal(tree.children[0].children.length, 0);
+    });
+
     it("<a href='abc' id='abc' ></a>", function() {
         const tree = parseHTML("<a href='abc' id='abc' ></a>");
         assert.equal(tree.children.length, 1);
@@ -72,9 +78,15 @@ describe('parse html', function() {
 
     it("<>", function() {
         const tree = parseHTML("<>");
-        console.log(tree);
         assert.equal(tree.children.length, 1);
         assert.equal(tree.children[0].type, "text");
+    });
+
+    it("<div style='width: 100px'></div>", function() {
+        const tree = parseHTML("<div style='width: 100px'></div>");
+        console.log(tree);
+        assert.equal(tree.children.length, 1);
+        assert.equal(tree.children[0].type, "element");
     });
 });
 
